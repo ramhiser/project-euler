@@ -15,13 +15,25 @@ raw_data = """75
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23"""
 
-
+# For an individual row in the binary tree, we return the maximum value
+# of each pair.
+# As an example, consider the 4th line from above. The max_pairs
+# of 18 35 87 10 would be 35 87 87.
 def max_pairs(li):
   return(array([max(li[i], li[i+1]) for i in (range(len(li) - 1))]))
 
+# For each row in the raw_data binary tree, we construct an numpy.array
+# that has each of the row's values.
+# Returns a list whose elements are the binary tree's rows.
 data = [array(map(int, row.strip().split())) for row in raw_data.splitlines()]
 data.reverse()
 
+# This is the core algorithm to solve the puzzle.
+# Start at the bottom of the tree, and find the max pairs.
+# Then add these to the row above it. This collapses the
+# original tree into a tree with one fewer rows.
+# Also, this approach allows us to avoid brute-forcing the
+# maximum sum.
 tree_sum = max_pairs(data[0]) + data[1] 
 for i in range(1, len(data) - 1):
   tree_sum = max_pairs(tree_sum) + data[i+1] 
