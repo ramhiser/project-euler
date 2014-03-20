@@ -1,4 +1,4 @@
-# Ramey's Solutions to Project Euler Problem
+# Solutions to Project Euler Problems
 
 This repository contains my solutions to various [Project
 Euler](http://projecteuler.net/) problems. Most (all?) of the solutions are
